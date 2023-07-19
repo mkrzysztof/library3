@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Administracja</h1>
+<nav>
+  <ul>
+    <li><a href="{% url 'add_reader' %}">Dodaj czytelnika</a></li>
+    <li><a href="#">Edytuj dane czytelnika</a></li>
+    <li><a href="#">Usuń czytelnika</a></li>
+    <li><a href="{% url 'add_book' %}">Dodaj nową książkę</a></li>
+    <li><a href="#">Usuń książkę z księgozbioru</a></li>
+  </ul>
+</nav>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Wyszukiwanie książki</h1>
+<form method="POST" action="{% url 'search_book' %}">
+  {% csrf_token %}
+  {{ form }}
+  <button type="submit">Wyszukaj</button>
+</form>
+{% endblock %}

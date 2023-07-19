@@ -1,0 +1,18 @@
+.navbar{
+    text-align: center;
+}
+
+.refbutton {
+    background-color: green;
+    font-style: normal;
+    text-decoration: none;
+}
+
+.refbutton:link{
+    color: black;
+}
+
+.refbutton:visited{
+    color: black;
+}
+

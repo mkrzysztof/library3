@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Czytelnik {{ reader_name }}</h1>
+{% if reader_id > 0 %}
+<nav>
+  <ul>
+    <li><a href="{% url 'borrow_book' %}">Wypożycz książkę</a></li>
+    <li><a href="{% url 'return_book' %}">Oddaj książkę</a></li>
+    <li><a href="{% url 'view_reader_book' %}">Wypożyczone książki</a></li>
+  </ul>
+</nav>
+{% endif %}
+{% if not was_borrowing %}
+<h1>Książka została już wypożyczona</h1>
+{% endif %}
+{% endblock %}

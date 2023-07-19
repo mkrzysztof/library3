@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'css/librarian.css' %}">
+    <title></title>
+    </head>
+  <body>
+    <nav class="navbar">
+      <a class="refbutton" href="{% url 'chose_reader' %}">Przejdź do czytelnika</a>
+      <a class="refbutton" href="{% url 'return_book' %}">Zwrot książki</a>
+      <a class="refbutton" href="{% url 'search_book' %}">Wyszukaj książki</a>
+      <a class="refbutton" href="{% url 'administration' %}">Administracja</a>
+    </nav>
+    <div>
+      {% block content %}
+      {% endblock %}
+    </div>
+  </body>
+</html>

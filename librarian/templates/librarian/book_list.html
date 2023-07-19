@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<ol>
+  {% for b in object_list %}
+  <li>{{b.author}} {{ b.title}}</li>
+  {% endfor %}
+</ol>
+<a href="{% url 'reader' %}">Powrót do czytelnika</a>
+{% endblock %}

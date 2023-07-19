@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Wybierz czytelnika</h1>
+<form method="POST" action="{% url 'find_reader' %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Zatwierdź">
+</form>
+
+{% endblock %}
