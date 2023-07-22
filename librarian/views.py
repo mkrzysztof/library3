@@ -1,4 +1,5 @@
 from django.db.utils import IntegrityError
+from django.db import connection
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
 from django.views import View
@@ -129,6 +130,21 @@ class SearchBookView(View):
         if form.is_valid():
             author = form.cleaned_data['author']
             title = form.cleaned_data['title']
-            print(author, title)
+            with connection.cursor() as cursor:
+                cursor.execute('''
+                SELECT book.id, book.author, book.title,
+                CASE
+                   WHEN borrowing.id is null THEN "wolna"
+                   ELSE "wypożyczona"
+                END AS is_free
+                FROM librarian_book as book LEFT JOIN
+                librarian_borrowing as borrowing
+                ON (book.id=borrowing.book_id)
+                WHERE book.title like %s
+                ''', [title])
+                rows = cursor.fetchall()
+            print(rows)
+            for r in rows:
+                print(r)
         return redirect(reverse('search_book'))
     
