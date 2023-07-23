@@ -6,4 +6,12 @@
   {{ form }}
   <button type="submit">Wyszukaj</button>
 </form>
+{% if find_books %}
+<h2>Znaleziono następujące pozycje</h2>
+<ol>
+  {% for book in find_books %}
+  <li>{{book|slice:"1:2"}} {{book|slice:"2:3"}} {{book|slice:"3:4"}}</li>
+  {% endfor %}
+</ol>
+{% endif %}
 {% endblock %}

@@ -121,7 +121,9 @@ class ReaderBookView(ListView):
 
 class SearchBookView(View):
     def get(self, request):
-        ctx = {'form': SearchBookForm()}
+        find_books = request.session.get('books_find', None)
+        ctx = {'form': SearchBookForm(),
+               'find_books': find_books}
         return render(request, 'librarian/search_book.html',
                       context=ctx)
 
@@ -143,7 +145,7 @@ class SearchBookView(View):
                 WHERE book.title like %s
                 ''', [title])
                 rows = cursor.fetchall()
-            print(rows)
+            request.session['books_find'] = rows
             for r in rows:
                 print(r)
         return redirect(reverse('search_book'))
